@@ -3,8 +3,8 @@
 # This class will install the necessary configuration for the Marathon integration
 #
 # Parameters:
-#   $hostname
-#       The host the java is running on. Defaults to 'localhost'.
+#   $host
+#       Host the java process is running on. Defaults to 'localhost'.
 #   $port
 #       The JMX port. Defaults to '7199'.
 #   $username
@@ -34,7 +34,7 @@
 #   }
 #
 class datadog_agent::integrations::jmx(
-  $hostname             = 'localhost',
+  $host                 = 'localhost',
   $port                 = 7199,
   $username             = undef,
   $password             = undef,
