@@ -14,7 +14,11 @@ class datadog_agent::ubuntu(
   $apt_key = 'C7A7DA52'
 ) {
 
-  ensure_packages(['apt-transport-https'])
+  if ! defined ( Package['apt-transport-https'] ) {
+    ensure_packages(['apt-transport-https'], {
+      before => File['/etc/apt/sources.list.d/datadog.list'] }
+    )
+  }
 
   if !$::datadog_agent::skip_apt_key_trusting {
     exec { 'datadog_key':
